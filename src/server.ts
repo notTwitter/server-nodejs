@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import { BACKEND_PORT, FRONTEND_SERVER_PORT, FRONTEND_SERVER_URL } from './backend.config'
 
 //Route Imports
-import { mainTest } from './Routes/Test/mainTest'
+import * as Tests from './Routes/Test/tests'
 
 //Set up
 const app = express()
@@ -21,5 +21,5 @@ app.use(cors({
     credentials: true
 }))
 
-//Endpoints
-app.get('/test', mainTest)
+//Test Endpoints
+app.get('/serverTest', Tests.serverTest)

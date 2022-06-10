@@ -24,9 +24,14 @@ app.listen(BACKEND_PORT, () => {
 //Database Init
 export const DATABASE = mysql.createPool(DATABASE_CONFIG)
 DATABASE.query(DATABASE_CONNECTION_TEST_QUERY, (err, result, fields)=>{
-    if(err) throw err;
-    console.log(`${TextColors.FgYellow}${TextColors.Exit}`,"Connection to MySQL established\n")
-})
+        if(err){
+            console.log(`${TextColors.FgMagenta}${TextColors.Exit}`,`\n${err}\n`)
+            console.log(`${TextColors.FgRed}${TextColors.Exit}`,"Connection to MySQL not established. Terminating programme...\n")
+            process.kill(0)
+        }else{
+        console.log(`${TextColors.FgYellow}${TextColors.Exit}`,"Connection to MySQL established\n")
+        }
+    })
 
 
 //Middleware

@@ -16,7 +16,7 @@ export const deleteUser = router.delete('/userHandling/deleteUser', authMiddlewa
     const dbResultUserExists = await queryDB(commandUserExists)
     if(dbResultUserExists.length===0){
         CONSOLE_LOG_API? console.log(`${TextColors.FgRed}${TextColors.Exit}`,"User does not exist. Aborting") : null
-        res.send({
+        res.status(403).send({
             success: false, userExists: false
         }
     )}else{
@@ -24,7 +24,7 @@ export const deleteUser = router.delete('/userHandling/deleteUser', authMiddlewa
         CONSOLE_LOG_API? console.log(`${TextColors.FgGreen}${TextColors.Exit}`,"User Exists. Proceeding") : null
         let commandDeleteUser = deleteUserQueryGenerator(userName)
         const dbDeleteUserReponse = await queryDB(commandDeleteUser)
-        res.send({
+        res.status(200).send({
             success: true,
             userExists: true
         })

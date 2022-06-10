@@ -16,7 +16,7 @@ export const registerUser = router.post('/userHandling/registerUser', async(req,
     if(dbResult.length>=1){
         req.session.isLoggedIn = true
         CONSOLE_LOG_API? console.log(`${TextColors.FgRed}${TextColors.Exit}`,"User Already Exists. Aborting.") : null
-        res.send({
+        res.status(403).send({
             success: false,
             userAlreadyExists: true,
             passWordCorrect: true
@@ -29,7 +29,7 @@ export const registerUser = router.post('/userHandling/registerUser', async(req,
         await queryDB(command)
         //Initializing the session
         req.session.isLoggedIn = true
-        res.send({
+        res.status(200).send({
             success: true,
             userAlreadyExists: false
         })

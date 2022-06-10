@@ -1,4 +1,3 @@
-//Functions -> Register user, Login user, Check isLoggedIn user
 import express from 'express'
 import { TextColors } from '../../Assets/init'
 import { CONSOLE_LOG_API } from '../../backend.config'

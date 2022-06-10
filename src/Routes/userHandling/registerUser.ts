@@ -2,6 +2,7 @@ import express from 'express'
 import { TextColors } from '../../Assets/init'
 import { CONSOLE_LOG_API } from '../../backend.config'
 import { queryDB } from '../../Database/databaseFunctions'
+import { checkExistsQueryGenerator } from '../../Database/databaseQueries'
 import { InterfaceNewUser } from '../../typeDefinitions'
 const router = express.Router()
 
@@ -16,9 +17,9 @@ export const registerUser = router.post('/userHandling/registerUser', async(req,
         req.session.isLoggedIn = true
         CONSOLE_LOG_API? console.log(`${TextColors.FgRed}${TextColors.Exit}`,"User Already Exists. Aborting.") : null
         res.send({
+            success: false,
             userAlreadyExists: true,
-            passWordCorrect: true,
-            success: false
+            passWordCorrect: true
         })
     }
     //Else we can add the user to the database
@@ -29,16 +30,13 @@ export const registerUser = router.post('/userHandling/registerUser', async(req,
         //Initializing the session
         req.session.isLoggedIn = true
         res.send({
-            userAlreadyExists: false,
-            success: true
+            success: true,
+            userAlreadyExists: false
         })
     }
 })
 
 //Query Generators
-const checkExistsQueryGenerator = (userName: string, passWord: string): string => {
-    return `select * from userData where userName="${userName}" and passWord="${passWord}"`
-}
 const addUserQueryGenerator = (userName: string, passWord: string): string => {
     return `insert into userData (userName, passWord) values ("${userName}", "${passWord}")`
 }

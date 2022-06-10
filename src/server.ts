@@ -4,12 +4,13 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import mysql from 'mysql'
 import { BACKEND_PORT, DATABASE_CONFIG, FRONTEND_SERVER_PORT, FRONTEND_SERVER_URL, SESSION_SECRET } from './backend.config'
+import { TextColors, cliSetup } from './Assets/init'
 import { DATABASE_CONNECTION_TEST_QUERY } from './Database/databaseQueries'
 
 //Route Imports
 import * as Tests from './Routes/Test/tests'
-import * as userHandling from './Routes/userHandling/registerUser'
-import { TextColors, cliSetup } from './Assets/init'
+import {registerUser} from './Routes/userHandling/registerUser'
+import { deleteUser } from './Routes/userHandling/deleteUser'
 
 //CLI Set Up
 cliSetup()
@@ -47,4 +48,5 @@ app.get('/serverTest', Tests.serverTest)
 app.get('/authTest', Tests.authTest)
 
 //User Handling Endpoints
-app.post('/userHandling/registerUser',jsonParser, userHandling.registerUser)
+app.post('/userHandling/registerUser',jsonParser, registerUser)
+app.delete('/userHandling/deleteUser', jsonParser, deleteUser)

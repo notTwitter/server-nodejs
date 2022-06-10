@@ -1,5 +1,7 @@
 
-## Database Setup ##<br>
+## Database Setup ##
+<br>
+
 - Donwload, install and set up MySQL.
 - Create a database called 'notTwitter'.
 - Change the **database** user inside src/backendend.config.ts. (ie set the username and the password of your database).

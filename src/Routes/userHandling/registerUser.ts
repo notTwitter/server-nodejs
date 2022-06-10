@@ -1,5 +1,6 @@
 //Functions -> Register user, Login user, Check isLoggedIn user
 import express from 'express'
+import { TextColors } from '../../Assets/init'
 import { CONSOLE_LOG_API } from '../../backend.config'
 import { queryDB } from '../../Database/databaseFunctions'
 import { InterfaceNewUser } from '../../typeDefinitions'
@@ -7,15 +8,14 @@ const router = express.Router()
 
 
 export const registerUser = router.post('/userHandling/registerUser', async(req, res) => {
-    CONSOLE_LOG_API? console.log("Requested /registerUser") : null
+    CONSOLE_LOG_API? console.log(`${TextColors.FgBlue}${TextColors.Exit}`,"Requested /registerUser") : null
     const newUserDetails:InterfaceNewUser = req.body
-    console.log(req.sessionID)
     let command = checkExistsQueryGenerator(newUserDetails.userName, newUserDetails.passWord)
     const dbResult = await queryDB(command)
     //If a result exists => user already exists
     if(dbResult.length>=1){
         req.session.isLoggedIn = true
-        CONSOLE_LOG_API? console.log("User Already Exists. Aborting.") : null
+        CONSOLE_LOG_API? console.log(`${TextColors.FgRed}${TextColors.Exit}`,"User Already Exists. Aborting.") : null
         res.send({
             userAlreadyExists: true,
             passWordCorrect: true,
@@ -24,7 +24,7 @@ export const registerUser = router.post('/userHandling/registerUser', async(req,
     }
     //Else we can add the user to the database
     else{
-        CONSOLE_LOG_API? console.log("User Does Not Exist. Proceeding.") : null
+        CONSOLE_LOG_API? console.log(`${TextColors.FgGreen}${TextColors.Exit}`, "User Does Not Exist. Proceeding.") : null
         let command = addUserQueryGenerator(newUserDetails.userName, newUserDetails.passWord)
         await queryDB(command)
         //Initializing the session

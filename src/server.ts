@@ -9,7 +9,7 @@ import { DATABASE_CONNECTION_TEST_QUERY } from './Database/databaseQueries'
 //Route Imports
 import * as Tests from './Routes/Test/tests'
 import * as userHandling from './Routes/userHandling/registerUser'
-import { cliSetup } from './Assets/init'
+import { TextColors, cliSetup } from './Assets/init'
 
 //CLI Set Up
 cliSetup()
@@ -17,14 +17,14 @@ cliSetup()
 const app = express()
 export const jsonParser = bodyParser.json();
 app.listen(BACKEND_PORT, () => {
-    console.log(`App running on port ${BACKEND_PORT}`)
+    console.log(`${TextColors.FgBlue}${TextColors.Exit}`,`App running on port ${BACKEND_PORT}`)
 })
 
 //Database Init
 export const DATABASE = mysql.createPool(DATABASE_CONFIG)
 DATABASE.query(DATABASE_CONNECTION_TEST_QUERY, (err, result, fields)=>{
     if(err) throw err;
-    console.log("Connection to MySQL established\n")
+    console.log(`${TextColors.FgYellow}${TextColors.Exit}`,"Connection to MySQL established\n")
 })
 
 

@@ -2,7 +2,7 @@ import express from 'express'
 import session from 'express-session'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { BACKEND_PORT, FRONTEND_SERVER_PORT, FRONTEND_SERVER_URL } from './backend.config'
+import { BACKEND_PORT, FRONTEND_SERVER_PORT, FRONTEND_SERVER_URL, SESSION_SECRET } from './backend.config'
 
 //Route Imports
 import * as Tests from './Routes/Test/tests'
@@ -20,6 +20,15 @@ app.use(cors({
     origin: `${FRONTEND_SERVER_URL}:${FRONTEND_SERVER_PORT}`,
     credentials: true
 }))
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: undefined,
+    }
+}))
 
 //Test Endpoints
 app.get('/serverTest', Tests.serverTest)
+app.get('/authTest', Tests.authTest)

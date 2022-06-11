@@ -1,4 +1,5 @@
 
 export const authError = {
-    accessDenied: true
+    accessDenied: true,
+    isLoggedIn: false
 }

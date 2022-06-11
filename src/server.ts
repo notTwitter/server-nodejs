@@ -11,6 +11,7 @@ import { DATABASE_CONNECTION_TEST_QUERY } from './Database/databaseQueries'
 import * as Tests from './Routes/TestRoutes/tests'
 import {registerUser} from './Routes/userHandling/registerUser'
 import { deleteUser } from './Routes/userHandling/deleteUser'
+import { checkAuth } from './Routes/userHandling/checkAuth'
 
 //CLI Set Up
 cliSetup()
@@ -55,3 +56,4 @@ app.get('/authTest', Tests.authTest)
 //User Handling Endpoints
 app.post('/userHandling/registerUser',jsonParser, registerUser)
 app.delete('/userHandling/deleteUser', jsonParser, deleteUser)
+app.get('/userHandling/checkAuth', checkAuth)

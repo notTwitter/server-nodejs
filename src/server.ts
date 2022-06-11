@@ -12,6 +12,7 @@ import * as Tests from './Routes/TestRoutes/tests'
 import {registerUser} from './Routes/userHandling/registerUser'
 import { deleteUser } from './Routes/userHandling/deleteUser'
 import { checkAuth } from './Routes/userHandling/checkAuth'
+import { loginUser } from './Routes/userHandling/loginUser'
 
 //CLI Set Up
 cliSetup()
@@ -57,3 +58,4 @@ app.get('/authTest', Tests.authTest)
 app.post('/userHandling/registerUser',jsonParser, registerUser)
 app.delete('/userHandling/deleteUser', jsonParser, deleteUser)
 app.get('/userHandling/checkAuth', checkAuth)
+app.post('/userHandling/loginUser', jsonParser, loginUser)

@@ -13,6 +13,7 @@ import {registerUser} from './Routes/userHandling/registerUser'
 import { deleteUser } from './Routes/userHandling/deleteUser'
 import { checkAuth } from './Routes/userHandling/checkAuth'
 import { loginUser } from './Routes/userHandling/loginUser'
+import { createPost } from './Routes/postHandling/createPost'
 
 //CLI Set Up
 cliSetup()
@@ -59,3 +60,6 @@ app.post('/userHandling/registerUser',jsonParser, registerUser)
 app.delete('/userHandling/deleteUser', jsonParser, deleteUser)
 app.get('/userHandling/checkAuth', checkAuth)
 app.post('/userHandling/loginUser', jsonParser, loginUser)
+
+//Post Handling Endpoints
+app.post('/postHandling/createPost/', jsonParser, createPost)

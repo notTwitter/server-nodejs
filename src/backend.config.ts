@@ -15,7 +15,7 @@ export const DATABASE_CONFIG = {
 }
 
 //Front end consts
-export const FRONTEND_SERVER_URL:String = 'localhost'
-export const FRONTEND_SERVER_PORT:String = 'localhost'
+export const FRONTEND_SERVER_URL:string = 'localhost'
+export const FRONTEND_SERVER_PORT:number = 3000
 export const USING_SSL:boolean = false
 

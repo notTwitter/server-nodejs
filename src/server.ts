@@ -38,7 +38,7 @@ DATABASE.query(DATABASE_CONNECTION_TEST_QUERY, (err, result, fields)=>{
 
 //Middleware
 app.use(cors({
-    origin: `${FRONTEND_SERVER_URL}:${FRONTEND_SERVER_PORT}`,
+    origin: `http://${FRONTEND_SERVER_URL}:${FRONTEND_SERVER_PORT}`,
     credentials: true
 }))
 app.use(session({

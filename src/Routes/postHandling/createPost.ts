@@ -7,7 +7,7 @@ const router = express.Router()
 
 export const createPost = router.post('/postHandling/createPost',authMiddleware, async(req, res) => {
     CONSOLE_LOG_API? console.log(`${TextColors.FgBlue}${TextColors.Exit}`, "Requested /createPost") : null
-    const userName = req.session.userName
+    const userName:string | undefined = req.session.userName
     //We know that this endpoint wont' be reached unless it goes throught the auth middleware => means req.session.userName is DEFINITELY not undefine
     //@ts-ignore
     const commandCreatePost = createPostQueryGenerator(userName, req.body.postContent)

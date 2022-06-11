@@ -8,7 +8,7 @@ import { TextColors, cliSetup } from './Assets/init'
 import { DATABASE_CONNECTION_TEST_QUERY } from './Database/databaseQueries'
 
 //Route Imports
-import * as Tests from './Routes/Test/tests'
+import * as Tests from './Routes/TestRoutes/tests'
 import {registerUser} from './Routes/userHandling/registerUser'
 import { deleteUser } from './Routes/userHandling/deleteUser'
 

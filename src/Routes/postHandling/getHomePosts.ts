@@ -27,5 +27,5 @@ export const getHomePosts = router.get('/postHandling/getHomePosts',authMiddlewa
 
 //Query Generators
 const getHomePostsQueryGenerator = (userName: string): string => {
-    return `select postContent, dateTime, userName from postData`
+    return `select * from postData order by dateTime`
 }

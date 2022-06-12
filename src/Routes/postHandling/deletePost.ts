@@ -27,6 +27,7 @@ export const deletePost = router.delete('/postHandling/deletePost',authMiddlewar
             res.status(404).send({
                 success: false,
                 postExisted: false,
+                comment: "Username or postID is incorrect"
             })
         }
     }

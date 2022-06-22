@@ -2,3 +2,4 @@
 .env
 /build
 /notTwitterServer.js
+.DS_Store
